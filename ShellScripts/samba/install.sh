@@ -4,7 +4,7 @@ apt-get update
 apt-get -y install samba
 
 mv /etc/samba/smb.conf /etc/samba/smb.conf.bak
-cp /srv/nevsoft/setup/ShellScripts/samba/smb.conf /etc/samba/smb.conf
+cp ./smb.conf /etc/samba/smb.conf
 
 service samba restart
 
