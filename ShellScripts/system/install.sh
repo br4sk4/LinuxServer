@@ -1,4 +1,8 @@
+#!/bin/bash
+
 apt-get update
+
+apt-get install -y nano
 apt-get install -y git-core
 
 # don't forget
