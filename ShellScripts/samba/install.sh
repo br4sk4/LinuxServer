@@ -4,4 +4,8 @@ apt-get -y install samba
 cp smb.conf /etc/samba/smb.conf
 
 service samba restart
-smbpasswd -U braska
+
+# don't forget:
+
+# Create Samba-User
+# smbpasswd -U user
