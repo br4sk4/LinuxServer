@@ -2,20 +2,20 @@
 set -e
 
 ### BEGIN INIT INFO
-# Provides:           service-container
+# Provides:           container
 # Required-Start:     $syslog $remote_fs
 # Required-Stop:      $syslog $remote_fs
 # Should-Start:       cgroupfs-mount cgroup-lite
 # Should-Stop:        cgroupfs-mount cgroup-lite
 # Default-Start:      2 3 4 5
 # Default-Stop:       0 1 6
-# Short-Description:  Docker Container for ServiceContainer
+# Short-Description:  Docker Container for Service
 ### END INIT INFO
 
 export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
 
-DAEMON=service-container
-NAME="ServiceContainer"
+DAEMON=container
+NAME="Service"
 
 # Get lsb functions
 . /lib/lsb/init-functions

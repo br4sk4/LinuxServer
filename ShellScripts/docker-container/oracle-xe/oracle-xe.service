@@ -1,0 +1,12 @@
+[Unit]
+Description=OracleXE Docker Container
+Requires=docker.service
+After=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker start -a oracle-xe
+ExecStop=/usr/bin/docker stop -t 2 oracle-xe
+
+[Install]
+WantedBy=default.target
