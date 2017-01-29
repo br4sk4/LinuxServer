@@ -1,7 +1,7 @@
 # LinuxServer
 
-Do the following Steps to setup a Debian-Linux-Server
-in extension add Docker-Containers as Services for each Database-Instance
+Do the following Steps to setup a Debian-Linux-Server\n
+in extension add Docker-Containers as Services for each Database-Instance\n
 
 1: Setup the Linux-Debian Base Installation (for example in a virtual Machine)
 2: Run the Commands listed in "/ShellScripts/system/install.sh" to setup Git
