@@ -14,7 +14,8 @@ Do the following Steps to setup a Debian-Linux-Server in extension add Docker-Co
 ***
   
 ## # Coming soon
-To complete the production environment for the NevSuite-Samples i will add the following Docker-Images to extend the LinuxServer:
+To extend the LinuxServer for the NevSuite-Samples i will add the following list of Docker-Images.  
+This will complete the production environment to run the NevSuite-Samples.  
   
 - Docker Image for MongoDB
 - Docker Image for GlassFish4-Application-Server
