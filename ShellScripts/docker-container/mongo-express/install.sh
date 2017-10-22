@@ -1,7 +1,7 @@
 #!/bin/bash
 
 docker pull mongo-express:latest
-docker run --name mongoexpress --link mongo-db:mongo -dip 8081:8081 mongo-express
+docker run --name mongo-express --link mongo-db:mongo -dip 8081:8081 mongo-express
 docker stop mongo-express
 
 cp /srv/nevsoft/setup/ShellScripts/docker-container/mongo-express/mongo-express /etc/init.d/mongo-express
