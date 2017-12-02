@@ -2,7 +2,6 @@
 
 docker pull mongo:3.4
 docker run --name mongo-db -dip 27017:27017 mongo
-docker stop mongo-db
 
 cp /srv/nevsoft/setup/ShellScripts/docker-container/mongo-db/mongo-db /etc/init.d/mongo-db
 chown root:root /etc/init.d/mongo-db

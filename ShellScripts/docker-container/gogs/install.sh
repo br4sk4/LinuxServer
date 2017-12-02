@@ -5,8 +5,7 @@ chown root:root /srv/gogs
 chmod 755 /srv/gogs
 
 docker pull gogs/gogs:latest
-docker run --name=gogs -di -p 22:8082 -p 3000:8083 -v /srv/gogs:/data gogs/gogs
-docker stop gogs
+docker run --name=gogs -di -p 8082:22 -p 8083:3000 -v /srv/gogs:/data gogs/gogs
 
 cp /srv/nevsoft/setup/ShellScripts/docker-container/gogs/gogs /etc/init.d/gogs
 chown root:root /etc/init.d/gogs

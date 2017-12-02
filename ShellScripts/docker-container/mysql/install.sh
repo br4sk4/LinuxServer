@@ -2,7 +2,6 @@
 
 docker pull mysql:latest
 docker run --name=mysql -e MYSQL_ROOT_PASSWORD=mysql -dip 3306:3306 mysql
-docker stop mysql
 
 cp /srv/nevsoft/setup/ShellScripts/docker-container/mysql/mysql /etc/init.d/mysql
 chown root:root /etc/init.d/mysql

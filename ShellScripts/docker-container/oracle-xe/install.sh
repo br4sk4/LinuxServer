@@ -2,7 +2,6 @@
 
 docker build -t oracle-xe /srv/nevsoft/setup/DockerImages/OracleXE
 docker run -dip 1521:1521 --name oracle-xe oracle-xe
-docker stop oracle-xe
 
 cp /srv/nevsoft/setup/ShellScripts/docker-container/oracle-xe/oracle-xe /etc/init.d/oracle-xe
 chown root:root /etc/init.d/oracle-xe
