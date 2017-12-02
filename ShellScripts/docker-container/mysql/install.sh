@@ -1,10 +1,6 @@
 #!/bin/bash
 
-mkdir -p /srv/mysql
-chown root:root /srv/mysql
-chmod 755 /srv/mysql
-
-docker pull mysql/mysql:latest
+docker pull mysql:latest
 docker run --name=mysql -dip 3306:3306 -e MYSQL_ROOT_PASSWORD=mysql mysql
 docker stop mysql
 
