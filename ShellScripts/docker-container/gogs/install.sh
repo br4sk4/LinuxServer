@@ -1,8 +1,8 @@
 #!/bin/bash
 
 mkdir -p /srv/gogs
-chown root:root /srv/gogs
-chmod 755 /srv/gogs
+chown -R root:users /srv/gogs
+chmod -R 755 /srv/gogs
 
 docker pull gogs/gogs:latest
 docker run --name=gogs -di -p 8082:22 -p 8083:3000 -v /srv/gogs:/data gogs/gogs
