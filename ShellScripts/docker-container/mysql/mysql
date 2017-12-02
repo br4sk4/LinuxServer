@@ -1,0 +1,92 @@
+#!/bin/bash
+set -e
+
+### BEGIN INIT INFO
+# Provides:           mysql
+# Required-Start:     $syslog $remote_fs
+# Required-Stop:      $syslog $remote_fs
+# Should-Start:       cgroupfs-mount cgroup-lite
+# Should-Stop:        cgroupfs-mount cgroup-lite
+# Default-Start:      2 3 4 5
+# Default-Stop:       0 1 6
+# Short-Description:  Docker Container for MySQL
+### END INIT INFO
+
+export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/sbin:/usr/local/bin
+
+DAEMON=mysql
+NAME="MySQL"
+
+# Get lsb functions
+. /lib/lsb/init-functions
+
+fail_unless_root() {
+	if [ "$(id -u)" != '0' ]; then
+		log_failure_msg "$NAME must be run as root"
+		exit 1
+	fi
+}
+
+start_container() {
+	log_begin_msg "Starting $NAME .."
+	docker start $DAEMON >> /dev/null
+	log_end_msg $?
+
+}
+
+stop_container() {
+	log_begin_msg "Stopping $NAME .."
+	docker stop $DAEMON >> /dev/null
+	log_end_msg $?
+}
+
+container_status() {
+	RUNNING=$(docker inspect --format="{{.State.Running}}" $DAEMON)
+	if [[ "true" == "$RUNNING" ]]; then
+		echo 'Container '$NAME' is running'
+	else
+		echo 'Container '$NAME' is not running'
+	fi
+}
+
+case "$1" in
+	start)
+		fail_unless_root
+		RUNNING=$(docker inspect --format="{{.State.Running}}" $DAEMON)
+		if [[ "true" == "$RUNNING" ]]; then
+			echo 'Container '$NAME' is already running'
+		else
+			start_container
+		fi
+		;;
+
+	stop)
+		fail_unless_root
+		RUNNING=$(docker inspect --format="{{.State.Running}}" $DAEMON)
+		if [[ "true" == "$RUNNING" ]]; then
+			stop_container
+		else
+			echo 'Container '$NAME' is not running'
+		fi
+		;;
+
+	restart)
+		fail_unless_root
+		RUNNING=$(docker inspect --format="{{.State.Running}}" $DAEMON)
+		if [[ "true" == "$RUNNING" ]]; then
+			stop_container
+			start_container
+		else
+			start_container
+		fi
+		;;
+
+	status)
+		container_status
+		;;
+
+	*)
+		echo "Usage: service $DAEMON {start|stop|restart|status}"
+		exit 1
+		;;
+esac
